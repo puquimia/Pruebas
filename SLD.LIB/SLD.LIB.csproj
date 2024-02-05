@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\DAccesos.cs" />
+    <Compile Include="Logica_P3\Cliente.cs" />
+    <Compile Include="Logica_P3\Estaticos.cs" />
+    <Compile Include="Logica_P3\Producto.cs" />
+    <Compile Include="Logica_P3\Venta.cs" />
+    <Compile Include="Logica_P3\VentaDetalle.cs" />
     <Compile Include="O\PRO\AD\DAccesos.cs" />
     <Compile Include="O\PRO\LO\Producto.cs" />
     <Compile Include="O\SOL\AD\DAccesos.cs" />
