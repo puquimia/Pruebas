@@ -33,6 +33,11 @@ namespace SLD.LIB.Logica_P3
         public void Registrar()
         {
             acceso.Insert(this);
+            foreach(VentaDetalle eDetalle in this.VentaDetalle)
+            {
+                eDetalle.IdVenta = this.Id;
+                acceso.Insert(eDetalle);
+            }
         }
 
         public List<object> Listar()
