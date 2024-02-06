@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLD.FORM", "SLD.FORM\SLD.FO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLD.TEST", "SLD.TEST\SLD.TEST.csproj", "{109849A7-DF36-4FC5-B741-D786BFE56CC0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLD.SpecFlowTest", "SLD.SpecFlowTest\SLD.SpecFlowTest.csproj", "{D460090B-0F6E-42C3-AD47-05B8EAD6677A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLD.WEB", "SLD.WEB\SLD.WEB.csproj", "{45C67DAA-C695-4916-8EA0-C76E3A99991E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{109849A7-DF36-4FC5-B741-D786BFE56CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{109849A7-DF36-4FC5-B741-D786BFE56CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{109849A7-DF36-4FC5-B741-D786BFE56CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D460090B-0F6E-42C3-AD47-05B8EAD6677A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D460090B-0F6E-42C3-AD47-05B8EAD6677A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D460090B-0F6E-42C3-AD47-05B8EAD6677A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D460090B-0F6E-42C3-AD47-05B8EAD6677A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C67DAA-C695-4916-8EA0-C76E3A99991E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C67DAA-C695-4916-8EA0-C76E3A99991E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C67DAA-C695-4916-8EA0-C76E3A99991E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C67DAA-C695-4916-8EA0-C76E3A99991E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

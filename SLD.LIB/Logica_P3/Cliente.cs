@@ -36,9 +36,9 @@ namespace SLD.LIB.Logica_P3
             acceso.Insert(this);
         }
 
-        public List<object> Listar()
+        public List<Cliente> Listar()
         {
-            return acceso.EjecutarConsultaSP("TraerClientes", x=>x.Read<Cliente>().ToList());
+            return acceso.TrerLista<Cliente>("TraerClientes", null);
         }
         public Cliente Traer(int idCliente)
         {

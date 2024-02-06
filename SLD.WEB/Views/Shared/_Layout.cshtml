@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Practica</title>
+    <link href="~/Css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/theme.css" rel="stylesheet" />
+    <link href="~/Css/sweetalert2.css" rel="stylesheet" />
+    <link href="~/Css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Css/jquery-ui.theme.css" rel="stylesheet" />
+</head>
+<body style="background-color: #ecf0f5;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Clientes")">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Ventas")">Ventas</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div style="padding: 10px;">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/lib/jquery.js"></script>
+    <script src="~/Scripts/lib/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/lib/jsrender.js"></script>
+    <script src="~/Scripts/lib/sweetalert2.min.js"></script>
+    <script src="~/Scripts/lib/jquery-ui.js"></script>
+    <script src="~/Scripts/lib/sld_ajax.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
