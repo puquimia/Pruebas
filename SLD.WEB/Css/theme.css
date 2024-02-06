@@ -5573,3 +5573,7 @@ hr {
             white-space: normal !important
         }
 }
+
+.table th, .table td{
+    padding: 5px;
+}

@@ -63,18 +63,20 @@ namespace SLD.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult TraerProductos()
+        public ActionResult TraerProductos(string nombreCodigo)
         {
             try
             {
-                List<Cliente> lClientes = producto.
+                List<Producto> lProductos = producto.Buscar(nombreCodigo);
                 return Json(
-                    from eCli in lClientes
-                    where !string.IsNullOrEmpty(filtro.Trim()) ? eCli.Nombre.ToLower().StartsWith(filtro.ToLower()) : true
+                    from ePro in lProductos
                     select new
                     {
-                        value = eCli.Id,
-                        label = eCli.Codigo + " - " + eCli.Nombre
+                        Id = ePro.Id,
+                        Codigo = ePro.Codigo,
+                        Nombre = ePro.Nombre,
+                        Precio =  ePro.PrecioVenta,
+                        Stock = ePro.Stock
                     }
                 );
             }

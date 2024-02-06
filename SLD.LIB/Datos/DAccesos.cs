@@ -101,6 +101,16 @@ namespace SLD.LIB.Datos
             }
         }
 
+        public List<T> EjecutarConsulta<T>(string consulta, DynamicParameters parametros) where T : class
+        {
+            using (var connection = new SqlConnection(cadenaConexion))
+            {
+                connection.Open();
+                return connection.Query<T>(sql: consulta,
+                                                    param: parametros).ToList();
+            }
+        }
+
         public T EjecutarConsultaSP<T>(string nombreSP, DynamicParameters parametros) where T : class
         {
             using (var connection = new SqlConnection(cadenaConexion))

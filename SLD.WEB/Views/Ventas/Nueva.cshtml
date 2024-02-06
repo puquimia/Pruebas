@@ -3,6 +3,12 @@
     ViewBag.Title = "Nueva";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .modal-body {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+</style>
 <h3>Nueva venta</h3>
 <div class="row">
     <div class="col-md-10">
@@ -26,7 +32,7 @@
                     <table class="table table-striped table-hover" style="width: 100%;">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th style="width: 20px;"></th>
                                 <th>Codigo</th>
                                 <th>Nombre producto</th>
                                 <th>Cantidad</th>
@@ -55,10 +61,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-success" title="Seleccionar" id="btnBuscarProducto"> <i class="fa fa-search"></i>Buscar</a>
+                    </div>
+                    <input type="text" class="form-control" id="txbCodigoNombreProducto" placeholder="Busque por nombre o código de producto" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                </div>
+                <table style="width: 100%;" class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th style="width:25px;"></th>
                             <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Precio</th>
@@ -77,14 +89,36 @@
 </div>
 
 <script type="text/x-jsrender" id="tmpProductos">
-    {{for Productos}}
-        <tr>
-            <td></td>
+    {{for}}
+        <tr data-id="{{>Id}}" data-codigo="{{>Codigo}}" data-nombre="{{>Nombre}}" data-precio="{{>Precio}}">
+            <td>
+                <a class="btn btn-success btn-sm" title="Seleccionar"> <i class="fa fa-check"></i>&nbsp;</a>
+            </td>
             <td>{{>Codigo}}</td>
             <td>{{>Nombre}}</td>
             <td>{{>Precio}}</td>
             <td>{{>Stock}}</td>
         </tr>
+    {{/for}}
+</script>
+
+<script type="text/x-jsrender" id="tmpDetalleVenta">
+    {{for}}
+    <tr>
+        <td>
+            <a class="btn btn-success btn-sm" title="Quitar"> <i class="fa fa-check"></i>&nbsp;</a>
+        </td>
+        <td>{{>Codigo}}</td>
+        <td>{{>Nombre}}</td>
+        <td>
+            <input type="text" class="cantidad" style="width: 80px;" />
+        </td>
+        <td>{{>Precio}}</td>
+        <td>
+            <input type="text" class="descuento"  style="width: 80px;" />
+        </td>
+        <td>{{>Subtotal}}</td>
+    </tr>
     {{/for}}
 </script>
 @section Scripts{
