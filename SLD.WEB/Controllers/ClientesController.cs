@@ -26,7 +26,7 @@ namespace SLD.WEB.Controllers
 
         public ActionResult Nuevo()
         {
-            ViewData["TiposDocumento"] = estaticos.TraerEstaticosxGrupo("TIPO.PRODUCTO");
+            ViewData["TiposDocumento"] = estaticos.TraerEstaticosxGrupo("TIPO.DOCUMENTO");
             return View();
         }
 

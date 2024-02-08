@@ -118,38 +118,89 @@ function Guardar() {
     }
     if (mensajes.length > 0) {
         Swal.fire({
+            position: "center",
             icon: "error",
             title: "Mensaje",
             html: mensajes.join("<br/>"),
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster`
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster`
+            }
         });
         return;
     }
-    var lDetalle = [];
-    $.each(lDetalleVenta, function (index, value) {
-        lDetalle.push({
-            IdProducto: value.IdProducto,
-            Cantidad: value.Cantidad,
-            PrecioUnitario: value.Precio.toFixed(2),
-            Descuento: value.Descuento.toFixed(2),
-            Subtotal: value.Subtotal.toFixed(2)
-        });
-    });
-    var dto = {
-        eVenta: {
-            IdCliente: Number(jtxbCliente.data("value")),
+    Swal.fire({
+        title: "Nueva venta",
+        text: "¿Está seguro de registrar la venta?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, registrar",
+        cancelButtonText: "Cancelar",
+        showClass: {
+            popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster`
         },
-        VentaDetalle: lDetalle
-    };
-    ajax.Metodo("Guardar", "Ventas", dto, function (data, status) {
-        Swal.fire({
-            icon: "success",
-            title: "Mensaje",
-            html: "Se regisro la venta correctamente.",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                location.href = "/Ventas";
-            }
-        });
+        hideClass: {
+            popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster`
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var lDetalle = [];
+            $.each(lDetalleVenta, function (index, value) {
+                lDetalle.push({
+                    IdProducto: value.IdProducto,
+                    Cantidad: value.Cantidad,
+                    PrecioUnitario: value.Precio.toFixed(2),
+                    Descuento: value.Descuento.toFixed(2),
+                    Subtotal: value.Subtotal.toFixed(2)
+                });
+            });
+            var dto = {
+                eVenta: {
+                    IdCliente: Number(jtxbCliente.data("value")),
+                },
+                VentaDetalle: lDetalle
+            };
+
+            ajax.Metodo("Guardar", "Ventas", dto, function (data, status) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Mensaje",
+                    html: "Se regisró la venta correctamente.",
+                    showClass: {
+                        popup: `
+                            animate__animated
+                            animate__fadeInUp
+                            animate__faster`
+                    },
+                    hideClass: {
+                        popup: `
+                            animate__animated
+                            animate__fadeOutDown
+                            animate__faster`
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.href = "/Ventas";
+                    }
+                });
+            });
+        }
     });
 }
 

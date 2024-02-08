@@ -55,8 +55,20 @@ function Guardar() {
     if (mensajes.length > 0) {
         Swal.fire({
             icon: "error",
-            title: "Mensaje",
+            title: "Nuevo cliente",
             html: mensajes.join("<br/>"),
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster`
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster`
+            }
         });
         return;
     }
@@ -70,8 +82,20 @@ function Guardar() {
     ajax.Metodo("Guardar","Clientes", dto, function (data, status) {
         Swal.fire({
             icon: "success",
-            title: "Mensaje",
-            html: "Se regisro el cliente correctamente.",
+            title: "Nuevo cliente",
+            html: "Se registró el cliente correctamente.",
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster`
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster`
+            }
         }).then((result) => {
             if (result.isConfirmed) {
                 location.href = "/Clientes";
