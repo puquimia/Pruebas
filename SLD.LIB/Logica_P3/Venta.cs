@@ -21,6 +21,8 @@ namespace SLD.LIB.Logica_P3
         public int IdUsuario { get; set; }
         public DateTime Fecha { get; set; }
         [Computed]
+        public decimal Total { get; set; }
+        [Computed]
         public List<VentaDetalle> VentaDetalle { get; set; }
         #endregion
 
@@ -32,6 +34,8 @@ namespace SLD.LIB.Logica_P3
         }
         public void Registrar()
         {
+            this.Fecha = DateTime.Now;
+            this.IdUsuario = 1;
             acceso.Insert(this);
             foreach(VentaDetalle eDetalle in this.VentaDetalle)
             {
@@ -40,9 +44,10 @@ namespace SLD.LIB.Logica_P3
             }
         }
 
-        public List<object> Listar()
+
+        public List<Venta> Listar()
         {
-            return acceso.EjecutarConsultaSP("TraerVentas", x => x.Read<Venta>().ToList());
+            return acceso.TrerLista<Venta>("TraerVentas", null);
         }
         public List<object> Traer(int idVenta)
         {

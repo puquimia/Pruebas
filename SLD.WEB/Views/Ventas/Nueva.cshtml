@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .modal-body {
-        max-height: 80vh;
-        overflow-y: auto;
+    .custom-modal {
+        height: 500px;
     }
 </style>
 <h3>Nueva venta</h3>
@@ -15,17 +14,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Cliente</label>
+                    <label style="margin-bottom: 0px;">Cliente <span class="obligatorio">*</span></label>
                     <input type="text" class="form-control" id="txbCliente" autocomplete="off" placeholder="Especifique un cliente" />
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="button" id="btnAgregarProductos" style="margin-top:30px;" class="btn btn-primary" value="Agregar productos" />
+                <input type="button" id="btnAgregarProductos" style="margin-top:25px;" class="btn btn-primary" value="Agregar productos" />
             </div>
             <div class="col-md-2">
-                <input type="button" style="margin-top:30px;" class="btn btn-success" value="Guardar" />
+                <input type="button" style="margin-top:25px;" id="btnGuardar" class="btn btn-success" value="Guardar" />
             </div>
         </div>
+        <h6 style="font-weight:bold;">DETALLE DE VENTA</h6>
         <div class="box box-primary" style="margin-top: 5px;">
             <div class="box-body">
                 <div>
@@ -43,6 +43,14 @@
                         </thead>
                         <tbody id="tbodyDetalleVenta">
                         </tbody>
+                        <tfoot>
+                            <tr style="font-weight:bold">
+                                <th colspan="6">TOTAL</th>
+                                <th>
+                                    <span id="lblTotal">0.00</span>
+                                </th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -52,18 +60,18 @@
 
 
 <div class="modal fade" id="divProductos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-lg custom-modal" role="document">
+        <div class="modal-content custom-modal">
             <div class="modal-header">
                 <h4 class="modal-title">Productos</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="overflow-y: auto">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <a class="btn btn-success" title="Seleccionar" id="btnBuscarProducto"> <i class="fa fa-search"></i>Buscar</a>
+                        <a class="btn btn-success" title="Seleccionar" id="btnBuscarProducto"> <i class="fa fa-search"></i> Buscar</a>
                     </div>
                     <input type="text" class="form-control" id="txbCodigoNombreProducto" placeholder="Busque por nombre o código de producto" aria-label="Input group example" aria-describedby="btnGroupAddon">
                 </div>
@@ -96,7 +104,7 @@
             </td>
             <td>{{>Codigo}}</td>
             <td>{{>Nombre}}</td>
-            <td>{{>Precio}}</td>
+            <td>{{:Precio.toFixed(2)}}</td>
             <td>{{>Stock}}</td>
         </tr>
     {{/for}}
@@ -106,18 +114,18 @@
     {{for}}
     <tr>
         <td>
-            <a class="btn btn-success btn-sm" title="Quitar"> <i class="fa fa-check"></i>&nbsp;</a>
+            <a class="btn btn-danger btn-sm" title="Quitar"> <i class="fa fa-trash"></i>&nbsp;</a>
         </td>
         <td>{{>Codigo}}</td>
         <td>{{>Nombre}}</td>
         <td>
-            <input type="text" class="cantidad" style="width: 80px;" />
+            <input type="text" class="cantidad form-control" style="width: 80px;" value="{{>Cantidad}}" />
         </td>
-        <td>{{>Precio}}</td>
+        <td>{{:Precio.toFixed(2)}}</td>
         <td>
-            <input type="text" class="descuento"  style="width: 80px;" />
+            <input type="text" class="descuento form-control"  style="width: 80px;" value="{{>Descuento}}" />
         </td>
-        <td>{{>Subtotal}}</td>
+        <td>{{:Subtotal.toFixed(2)}}</td>
     </tr>
     {{/for}}
 </script>

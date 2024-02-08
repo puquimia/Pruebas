@@ -36,9 +36,30 @@ namespace SLD.LIB.Logica_P3
             acceso.Insert(this);
         }
 
-        public List<Cliente> Listar()
+        public List<Cliente> Listar(string codigoNombre)
         {
-            return acceso.TrerLista<Cliente>("TraerClientes", null);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"
+                     SELECT
+	                      c.Id,
+                          c.Codigo,
+                          c.Nombre,
+                          c.TipoDocumento,
+	                      es.Valor NombreTipoDocumento,
+                          c.Documento,
+                          c.Email
+	                     FROM dbo.Cliente c
+	                     JOIN dbo.Estaticos es ON es.Codigo = c.TipoDocumento AND es.Grupo = 'TIPO.DOCUMENTO'
+                         WHERE  ");
+            DynamicParameters parametros = new DynamicParameters();
+            if (!string.IsNullOrEmpty(codigoNombre))
+            {
+                sb.Append("(c.Codigo LIKE @CodigoNombre OR c.Nombre LIKE @CodigoNombre) AND   ");
+                parametros.Add("CodigoNombre", $"%{codigoNombre}%", System.Data.DbType.AnsiString);
+            }
+            sb.Length -= 7;
+            sb.Append(" ORDER BY c.Nombre");
+            return acceso.EjecutarConsulta<Cliente>(sb.ToString(), parametros);
         }
         public Cliente Traer(int idCliente)
         {

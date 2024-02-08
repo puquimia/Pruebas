@@ -19,7 +19,7 @@ namespace SLD.WEB.Controllers
         // GET: Clientes
         public ActionResult Index()
         {
-            List<Cliente> lClientes = cliente.Listar();
+            List<Cliente> lClientes = cliente.Listar(string.Empty);
             ViewData["Clientes"] = lClientes;
             return View();
         }

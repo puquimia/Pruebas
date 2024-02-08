@@ -13,17 +13,17 @@
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <label>Código</label>
+                    <label>Código <span class="obligatorio">*</span></label>
                     <input type="text" class="form-control" id="txbCodigo" autocomplete="off" />
                 </div>
                 <div class="form-group">
-                    <label>Nombre</label>
+                    <label>Nombre <span class="obligatorio">*</span></label>
                     <input type="text" class="form-control" id="txbNombre" autocomplete="off" />
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Tipo de documento</label>
+                            <label>Tipo de documento <span class="obligatorio">*</span></label>
                             <select id="ddlTipoDocumento" class="form-control">
                                 <option value="">----Seleccione----</option>
                                 @foreach (var item in (List<Estaticos>)ViewData["TiposDocumento"])
@@ -35,13 +35,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Número de documento</label>
+                            <label>Número de documento <span class="obligatorio">*</span></label>
                             <input type="text" class="form-control" id="txbDocumento" autocomplete="off" />
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>E-mail</label>
+                    <label>E-mail <span class="obligatorio">*</span></label>
                     <input type="text" class="form-control" id="txbEmail" autocomplete="off" />
                 </div>
             </div>

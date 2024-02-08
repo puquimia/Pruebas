@@ -40,6 +40,7 @@ namespace SLD.LIB.Logica_P3
             DynamicParameters parametros = new DynamicParameters();
             if(!string.IsNullOrEmpty(nombre) )
             {
+                nombre = $"%{nombre}%";
                 sb.Append($"(p.Codigo LIKE @Nombre OR p.Nombre LIKE @Nombre) AND   ");
                 parametros.Add("Nombre", nombre, System.Data.DbType.AnsiString);
             }

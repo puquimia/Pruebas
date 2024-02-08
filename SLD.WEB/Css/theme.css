@@ -18,7 +18,8 @@ body {
     font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 400;
     overflow-x: hidden;
-    overflow-y: auto
+    overflow-y: auto;
+    font-size: 15px !important;
 }
 
 .wrapper {
@@ -5576,4 +5577,14 @@ hr {
 
 .table th, .table td{
     padding: 5px;
+}
+
+a:not([href]):not([tabindex]) {
+     color: white !important;
+}
+span.obligatorio{
+    color: red
+}
+.table td input {
+    height: 32px !important;
 }

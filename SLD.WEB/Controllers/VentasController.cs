@@ -11,13 +11,16 @@ namespace SLD.WEB.Controllers
     {
         private readonly Cliente cliente;
         private readonly Producto producto;
+        private readonly Venta venta;
         public VentasController()
         {
             cliente = new Cliente();
             producto = new Producto();
+            venta = new Venta();
         }
         public ActionResult Index()
         {
+            ViewData["Ventas"] = venta.Listar();
             return View();
         }
 
@@ -28,10 +31,11 @@ namespace SLD.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult Guardar(Venta eVenta)
+        public ActionResult Guardar(Venta eVenta, VentaDetalle[] VentaDetalle)
         {
             try
             {
+                eVenta.VentaDetalle = VentaDetalle.ToList();
                 eVenta.Registrar();
                 return Json(new { isSuccess = "ok" });
             }
@@ -45,10 +49,9 @@ namespace SLD.WEB.Controllers
         {
             try
             {
-                List<Cliente>lClientes = cliente.Listar();
+                List<Cliente>lClientes = cliente.Listar(filtro.Trim());
                 return Json(
                     from eCli in lClientes
-                    where !string.IsNullOrEmpty(filtro.Trim()) ? eCli.Nombre.ToLower().StartsWith(filtro.ToLower()) : true
                     select new
                     {
                         value = eCli.Id,
